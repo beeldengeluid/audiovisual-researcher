@@ -1,0 +1,44 @@
+<div id="registermodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-body">
+        <div class="logo">
+            <img src="/avresearcher/static/img/logo_avresearcher_b.png" />
+        </div>
+        <div id="userinput">
+            <h1>Create Account</h1>
+            <div class="errors alert alert-error">
+                <ul></ul>
+            </div>
+            <form id="registrationform" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="email">Email</label>
+                    <div class="controls">
+                        <input type="text" name="email" id="email">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" name="name" id="name">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="organization">Organization</label>
+                    <div class="controls">
+                        <input type="text" name="organization" id="organization">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="password">Password</label>
+                    <div class="controls">
+                        <input type="password" name="password" id="password">
+                    </div>
+                </div>
+
+                <button class="btn btn-large btn-primary" type="submit">Create Account</button>
+            </form>
+        </div>
+        <div class="loading">
+            <img src="/avresearcher/static/img/spinner.gif" />
+        </div>
+    </div>
+</div>

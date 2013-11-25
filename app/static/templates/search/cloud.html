@@ -1,0 +1,14 @@
+<div class="cloud">
+    <ul>
+        <% _.each(terms, function(term){ %>
+            <li>
+                <% if(selectedFacets[facetName].indexOf(term.term) !== - 1) { %>
+                    <% faceted ? colorStyle = ' color:black;' : colorStyle = ''; // only apply black if there has been faceted %>
+                    <a href="#" class="facet selected" data-facet="<%= facetName %>" data-value="<%= term.term %>" data-model="<%= modelName %>" style="font-size:<%= scale(term.count) %>px;<%= colorStyle %>" title="<%= term.count %> hits"><%= term.term %></a>
+                <% } else { %>
+                    <a href="#" class="facet" data-facet="<%= facetName %>" data-value="<%= term.term %>" data-model="<%= modelName %>" style="font-size:<%= scale(term.count) %>px;" title="<%= term.count %> hits"><%= term.term %></a>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+</div>

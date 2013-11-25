@@ -1,0 +1,35 @@
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <% _.each(facets, function(facet, facet_name){ %>
+            <% if(facet_name == activeTab){ %>
+                <li class="active"><a href="#" class="nav-tab" data-target="<%= facet_name %>"><%= facet.name %></a></li>
+            <% } else { %>
+                <li><a href="#" class="nav-tab" data-target="<%= facet_name %>"><%= facet.name %></a></li>
+            <% } %>
+        <% }); %>
+        <%
+            if(representation == "barcharts"){
+                barcharts = "active";
+                clouds = "inactive";
+            }
+            else {
+                barcharts = "inactive";
+                clouds = "active";
+            }
+        %>
+        <li class="pull-right representation <%= barcharts %>"><i class="icon-bar-chart icon-2x" data-representation="barcharts"></i></li>
+        <li class="pull-right representation <%= clouds %>"><i class="icon-cloud icon-2x" data-representation="clouds"></i></li>
+    </ul>
+    <div class="tab-content">
+        <% _.each(facets, function(facet, facet_name){ %>
+            <% if(facet_name == activeTab){ %>
+                <div class="tab-pane active tab-<%= facet_name %>" data-name="<%= facet_name %>">
+            <% } else { %>
+                <div class="tab-pane tab-<%= facet_name %>" data-name="<%= facet_name %>">
+            <% } %>
+            <div class="q1"></div>
+            <div class="q2"></div>
+        </div>
+        <% }); %>
+    </div>
+</div>

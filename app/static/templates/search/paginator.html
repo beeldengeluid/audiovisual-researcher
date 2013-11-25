@@ -1,0 +1,19 @@
+<ul>
+	<% if(totalPages !== 0 ){ %>
+		<% if(currentPage !== 1){ %>
+			<li><a href="#" data-page="1">&laquo;</a></li>
+			<li><a href="#" data-page="<%= currentPage -1 %>">&lsaquo;</a></li>
+		<% } %>
+		<% _.each(pages, function(page){ %>
+			<% if(page == currentPage){ %>
+			<li class="active"><span><%= page %></span></li>
+			<% } else { %>
+				<li><a href="#" data-page="<%= page %>"><%= page %></a></li>
+			<% } %>
+		<% }); %>
+		<% if(currentPage != totalPages){ %>
+			<li><a href="#" data-page="<%= currentPage + 1 %>">&rsaquo;</a></li>
+			<li><a href="#" data-page="<%= totalPages %>">&raquo;</a></li>
+		<% } %>
+	<% } %>
+</ul>
