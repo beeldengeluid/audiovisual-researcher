@@ -21,14 +21,20 @@ Requirements
 Installation
 ------------
 
-1. Clone the Git repo:
+1. Clone the repository:
 
 .. code-block:: bash
 
-  $ git clone git@git.dispectu.com:dispectu/avresearcher.git
-  $ cd avresearcher/
+  $ git clone https://github.com/beeldengeluid/audiovisual-researcher.git
+  $ cd audiovisual-researcher
 
-2. Create a virtualenv, activate it and install the required Python packages:
+2. Download r.js from http://github.com/jrburke/r.js 
+
+.. code-block:: bash
+
+  $ curl https://raw.github.com/jrburke/r.js/master/dist/r.js > r.js 
+
+3. Create a virtualenv, activate it and install the required Python packages:
 
 .. code-block:: bash
 
@@ -36,15 +42,15 @@ Installation
   $ source ~/my_pyenvs/avresearcher/bin/activate
   $ pip install -r requirements.txt
 
-3. Create a local settings file to override the default settings specified in ``settings.py``. In the next steps we describe to miminal number of settings that should be changed to get the application up-and-running. Please have a look at the comments in ``settings.py`` to get an overview of all possible settings.
+4. Create a local settings file to override the default settings specified in ``settings.py``. In the next steps we describe to miminal number of settings that should be changed to get the application up-and-running. Please have a look at the comments in ``settings.py`` to get an overview of all possible settings.
 
 .. code-block:: bash
 
   $ vim local_settings.py
 
-4. When running the appliction in a production enviroment, set ``DEBUG`` to ``False``
+5. When running the appliction in a production enviroment, set ``DEBUG`` to ``False``
 
-5. Set the ``SECRET_KEY`` for the installation (this key is used to sign cookies). A good random key can be generated as follows:
+6. Set the ``SECRET_KEY`` for the installation (this key is used to sign cookies). A good random key can be generated as follows:
 
 .. code-block:: pycon
 
@@ -52,7 +58,7 @@ Installation
   >>> os.urandom(24)
   '\x86\xb8f\xcc\xbf\xd6f\x96\xf0\x08v\x90\xed\xad\x07\xfa\x01\xd0\\L#\x95\xf6\xdd'
 
-6. Set the URLs and names of the ElasticSearch indexes:
+7. Set the URLs and names of the ElasticSearch indexes:
 
 .. code-block:: pycon
 
@@ -61,7 +67,7 @@ Installation
   ES_LOG_URL = ES_SEARCH_URL
   ES_LOG_INDEX = 'avresearcher_logs'
 
-7. Provide the settings of the SMTP that should be used to send notification emails during registration:
+8. Provide the settings of the SMTP that should be used to send notification emails during registration:
 
 .. code-block:: pycon
 
@@ -72,15 +78,22 @@ Installation
   MAIL_USERNAME = None
   MAIL_PASSWORD = None
 
-8. Provide the URI of the database. The SQLAlchemy documentation provides inforamation on how to `structure the URI <http://docs.sqlalchemy.org/en/rel_0_8/core/engines.html#database-urls>`_ for different databases. To use an SQLite database named ``avresearcher.db`` set ``DATABASE_URI`` to ``sqlite:///avresearcher.db``.
-9. Load the schema in the database configured in the previous step.
+9. Provide the URI of the database. The SQLAlchemy documentation provides inforamation on how to `structure the URI <http://docs.sqlalchemy.org/en/rel_0_8/core/engines.html#database-urls>`_ for different databases. To use an SQLite database named ``avresearcher.db`` set ``DATABASE_URI`` to ``sqlite:///avresearcher.db``.
+
+10. Load the schema in the database configured in the previous step.
 
 .. code-block:: pycon
 
   >>> from app import models
   >>> models.db.create_all()
 
-10. Use a build-in WSGI server (like uWSGI) or a standalone WSGI container (like Gunicorn) to run the Flask application. Make sure to serve static assets directly through the webserver.
+11. Use a build-in WSGI server (like uWSGI) or a standalone WSGI container (like Gunicorn) to run the Flask application. Make sure to serve static assets directly through the webserver.
+
+.. code-block:: bash
+
+   $ pip install gunicorn
+   $ gunicorn --bind 0.0.0.0 -w 4 app:app 
+
 
 License 
 =======
