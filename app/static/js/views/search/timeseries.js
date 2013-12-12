@@ -381,13 +381,16 @@ function($, _, Backbone, d3, app){
             var self = this;
             if (DEBUG) console.log('TimeSeriesView:determineInterval');
             var interval = model.get('interval');
+            var usingDefaultInterval = false;
             var downsize = false;
-
             if(!model.get('interval')){
                 interval = model.get('defaultInterval');
+                usingDefaultInterval = true;
             }
             if(options){
-                interval = options.interval;
+                if (options.interval) {
+                    interval = options.interval;
+                }
                 if(options.downsize){
                     downsize = options.downsize;
                 }
@@ -418,7 +421,10 @@ function($, _, Backbone, d3, app){
                        granularity.
 
                     */
-                    interval = ALLOWED_INTERVALS[ALLOWED_INTERVALS.indexOf(interval) - 1];
+                    // QUICK FIX (otherwise interval becomes null and results in error)
+                    if (!usingDefaultInterval) {
+                        interval = ALLOWED_INTERVALS[ALLOWED_INTERVALS.indexOf(interval) - 1];
+                    }
                     if (DEBUG) console.log('TimeSeriesView:determinedInterval: ' + interval);
 
                     if(interval == 'year'){
