@@ -139,7 +139,7 @@ define({
 
 	// List of facets that are displayed (in the different tabs) by default
 	DEFAULT_FACETS: ['genres', 'channels', 'producers', 'keywords',
-                     'people', 'top_100_twitter_terms', 'top_100_subtitle_terms'],
+                     'people', 'tweets', 'subtitles'],
 
 	// The facet that is used for the date range slider
 	DEFAULT_DATE_FACET: 'broadcast_start_date',
