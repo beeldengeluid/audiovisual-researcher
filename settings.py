@@ -3,7 +3,7 @@ _basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = False
 
-SECRET_KEY = '\x86\xb8f\xcc\xbf\xd6f\x96\xf0\x08v\x90\xed\xad\x07\xfa\x01\xd0\\L#\x95\xf6\xdd'
+SECRET_KEY = ''
 
 # URL of the ElasticSearch instance that contains the AVResearcher
 # broadcasts index
@@ -191,6 +191,18 @@ AVAILABLE_FACETS = {
             'size': 30
         }
     },
+    # This facet operates on the complete set of subtitle terms, but can be
+    # very memory expensive (every term present in the text has to be kept
+    # in memory)
+    'subtitles': {
+        'name': 'Subtitles',
+        'description': '',
+        'ui_presentation': 'checkbox',
+        'terms': {
+            'field': 'subtitles',
+            'size': 30
+        }
+    },
     # This facet operates on a list of the top 100 terms extracted from subtitles
     # (generated in whatever way; that is up to the indexer), as to economize
     # on memory usage
@@ -207,7 +219,7 @@ AVAILABLE_FACETS = {
 
 # List of facets that are displayed (in the different tabs) by default
 DEFAULT_FACETS = ['genres', 'channels', 'producers', 'keywords', 'people',
-                  'top_100_twitter_terms', 'top_100_subtitle_terms']
+                  'tweets', 'subtitles']
 
 # The facet that is used for the date range slider
 DEFAULT_DATE_FACET = 'broadcast_start_date'
