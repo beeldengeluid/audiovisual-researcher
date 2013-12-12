@@ -45,7 +45,7 @@ function($, _, Backbone, app){
         },
 
         initialize: function(){
-            this.api_url = '/api/';
+            this.api_url = '/avresearcher/api/';
 
             var self = this;
             app.vent.on('QueryInput:input:' + this.get('name'), function(){
@@ -64,7 +64,7 @@ function($, _, Backbone, app){
 
         http: {
             get: function(url, data, callback){
-                url = ['./api', url].join('/');
+                url = ['/avresearcher/api', url].join('/');
 
                 //if (DEBUG) console.log('AvrApiModel:http:post', url, payload);
                 $.ajax({
@@ -89,7 +89,7 @@ function($, _, Backbone, app){
                     data = {'events': JSON.stringify(data)};
                 }
 
-                url = ['./api', url].join('/');
+                url = ['/avresearcher/api', url].join('/');
 
                 //if (DEBUG) console.log('AvrApiModel:http:post', url, payload);
                 $.ajax({
@@ -223,6 +223,7 @@ function($, _, Backbone, app){
             });
 
             var filters = this.get('filters');
+
             // Only add the filter component to the query if at least one filter
             // is enabled.
             if(_.size(filters) > 0){
@@ -402,7 +403,7 @@ function($, _, Backbone, app){
                 startAtHit: 0,
                 currentPage: 1,
                 ftQuery: querystring,
-                filters: {}
+                filters: {broadcast_start_date: {facet_type: "range", field: "start", nested: true, path: "broadcastDates", values: {from: new Date(1800,1,1), to: new Date()}}}
             });
 
             this.set('currentPayload', this.constructQueryPayload());
