@@ -600,6 +600,14 @@ function($, _, Backbone, app){
                         "nested": "broadcastDates",
                         "statistical": {
                             "field": "start"
+                        },
+                        "facet_filter": {
+                            "range": {
+                                "broadcastDates.start": {
+                                    "gte": new Date(1800,1,1),
+                                    "lte": new Date()
+                                }
+                            }
                         }
                     }
                 },
