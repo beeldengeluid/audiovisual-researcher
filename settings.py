@@ -106,7 +106,7 @@ AVAILABLE_FACETS = {
             'size': 30
         },
         'facet_filter': {
-            'term': {'roleKey': 'producer'}
+            'term': {'roleKey': 'producent'}
         },
         'nested': 'roles'
     },

@@ -33,7 +33,7 @@ define({
 			},
 			facet_filter : {
 				term: {
-					roleKey : 'producer'
+					roleKey : 'producent'
 				}
             },
             nested: 'roles'
