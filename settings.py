@@ -7,12 +7,17 @@ SECRET_KEY = ''
 
 # URL of the ElasticSearch instance that contains the AVResearcher
 # broadcasts index
-ES_SEARCH_URL = 'http://localhost:9200/'
+ES_SEARCH_HOST = 'localhost'
+ES_SEARCH_PORT = 9200
+ES_SEARCH_URL_PREFIX = ''
+
 ES_SEARCH_INDEX = 'avresearcher'
 
 # URL of the ElasticSearch instance used to store usage logs (clicks,
 # queries, etc.)
-ES_LOG_URL = ES_SEARCH_URL
+ES_LOG_HOST = ES_SEARCH_HOST
+ES_LOG_PORT = ES_SEARCH_PORT
+ES_LOG_URL_PREFIX = ES_SEARCH_URL_PREFIX
 ES_LOG_INDEX = 'avresearcher_logs'
 
 # User database URI
@@ -281,10 +286,10 @@ LOG_EVENTS = ['clicks', 'results']
 
 # The URL to the JSON file that contains the (textual) information
 # displayed on the 'about' page
-ABOUT_PAGE_CONTENT_URL = '/avresearcher/static/about.json'
+ABOUT_PAGE_CONTENT_URL = 'static/about.json'
 
 # URL to JSON file that contains text for 'help' page
-HELP_PAGE_CONTENT_URL = '/avresearcher/static/help.json'
+HELP_PAGE_CONTENT_URL = 'static/help.json'
 
 # Allow all settings to be overridden by a local file that is not in
 # the VCS.

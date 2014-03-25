@@ -62,9 +62,14 @@ Installation
 
 .. code-block:: pycon
 
-  ES_SEARCH_URL = 'http://localhost:9200/'
+
+  ES_SEARCH_HOST = 'localhost'
+  ES_SEARCH_PORT = 9200
+  ES_SEARCH_URL_PREFIX = ''
   ES_SEARCH_INDEX = 'avresearcher'
-  ES_LOG_URL = ES_SEARCH_URL
+  ES_LOG_HOST = ES_SEARCH_HOST
+  ES_LOG_PORT = ES_SEARCH_PORT
+  ES_LOG_URL_PREFIX = ES_SEARCH_URL_PREFIX
   ES_LOG_INDEX = 'avresearcher_logs'
 
 8. Provide the settings of the SMTP that should be used to send notification emails during registration:
