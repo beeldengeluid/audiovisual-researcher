@@ -1,7 +1,7 @@
 <ul>
 <% _.each(hits, function(hit){ %>
     <li>
-        <h2><a href="http://zoeken.beeldengeluid.nl/internet/index.aspx?chapterid=1164&contentid=7&verityID=<%= hit._id.replace(/_/g, '/') %>@expressies" target="_blank" data-id="<%= hit._id %>"><%= hit.fields.mainTitle %></a></h2>
+        <h2><a href="http://zoeken.beeldengeluid.nl/internet/index.aspx?chapterid=1164&contentid=7&verityID=<%= hit._id.replace(/_/g, '/') %>@expressies" target="_blank" data-id="<%= hit._id %>"><%= hit._source.mainTitle %></a></h2>
     <% if('highlight' in hit){ %>
         <ul class="description">
         <% _.each(hit.highlight, function(snippet, field){
@@ -27,16 +27,16 @@
         </ul>
     <% } %>
         <ul class="metadata">
-        <% if(hit.fields.broadcastDates.length > 0){ %>
+        <% if(hit._source.broadcastDates.length > 0){ %>
         	<li>
         		<i class="icon-calendar"></i>
         	<%
         		// Sort by air date
-        		_(hit.fields.broadcastDates).sortBy(function(broadcast){
+        		_(hit._source.broadcastDates).sortBy(function(broadcast){
                     return broadcast.start;
         		});
         		var format = d3.time.format('%a %b %-e, %Y at %H:%M');
-        		var firstBroadcast = format(new Date(hit.fields.broadcastDates[0].start));
+        		var firstBroadcast = format(new Date(hit._source.broadcastDates[0].start));
         	%>
         		<%= firstBroadcast %>
         	</li>

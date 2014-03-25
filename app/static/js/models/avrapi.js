@@ -45,7 +45,7 @@ function($, _, Backbone, app){
         },
 
         initialize: function(){
-            this.api_url = '/avresearcher/api/';
+            this.api_url = 'api/';
 
             var self = this;
             app.vent.on('QueryInput:input:' + this.get('name'), function(){
@@ -64,7 +64,7 @@ function($, _, Backbone, app){
 
         http: {
             get: function(url, data, callback){
-                url = ['/avresearcher/api', url].join('/');
+                url = ['api', url].join('/');
 
                 //if (DEBUG) console.log('AvrApiModel:http:post', url, payload);
                 $.ajax({
@@ -89,7 +89,7 @@ function($, _, Backbone, app){
                     data = {'events': JSON.stringify(data)};
                 }
 
-                url = ['/avresearcher/api', url].join('/');
+                url = ['api', url].join('/');
 
                 //if (DEBUG) console.log('AvrApiModel:http:post', url, payload);
                 $.ajax({
@@ -353,7 +353,7 @@ function($, _, Backbone, app){
             payload.facets = facets;
 
             // The fields that are required to render the search results templates
-            payload.fields = this.get('enabledSearchHitFields');
+            payload._source = this.get('enabledSearchHitFields');
 
             // Number of hits to return and the offset
             payload.size = this.get('hitsPerPage');
