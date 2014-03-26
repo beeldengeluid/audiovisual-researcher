@@ -279,8 +279,7 @@ def logout():
 @login_required
 def search():
     payload = json.loads(request.form['payload'])
-    results = es_search.search(payload, index=ES_SEARCH_INDEX)
-    #results = es_search.search(index=ES_SEARCH_INDEX, body=payload)
+    results = es_search.search(index=ES_SEARCH_INDEX, body=payload)
     return jsonify(results)
 
 
@@ -288,8 +287,7 @@ def search():
 @login_required
 def count():
     payload = json.loads(request.form['payload'])
-    results = es_search.count(payload, index=ES_SEARCH_INDEX)
-    #results = es_search.count(index=ES_SEARCH_INDEX, body=payload)
+    results = es_search.count(index=ES_SEARCH_INDEX, body=payload)
 
     return jsonify(results)
 
@@ -307,8 +305,7 @@ def log_usage():
         bulkrequest = bulkrequest + '\n' + '{ "create" : { "_index" : "' +  ES_LOG_INDEX + '", "_type" : "event" } }'
         bulkrequest = bulkrequest + '\n' + json.dumps(event); 
 
-    es_log.bulk_index(ES_LOG_INDEX, 'event', events)
-    #es_log.bulk(bulkrequest, index=ES_LOG_INDEX, doc_type='event')
+    es_log.bulk(body=bulkrequest)
 
     return jsonify({'success': True})
     
