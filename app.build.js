@@ -3,12 +3,12 @@
     baseUrl: "js",
     dir: "appdirectory-build",
     paths: {
-        jquery: "lib/jquery",
+        jquery: "lib/jquery.min",
         underscore: "lib/underscore",
-        backbone: "lib/backbone",
-        bootstrap: "lib/bootstrap",
+        backbone: "lib/backbone.min",
+        bootstrap: "lib/bootstrap.min",
         raven: "lib/raven-1.0-beta3.min",
-        d3: "lib/d3.v3",
+        d3: "lib/d3.v3.min",
         templates: "../templates/",
         text: "text"
     },

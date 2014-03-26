@@ -1,10 +1,10 @@
 require.config({
     paths: {
-        'jquery': 'lib/jquery',
+        'jquery': 'lib/jquery.min',
         'underscore': 'lib/underscore',
-        'backbone': 'lib/backbone',
-        'bootstrap': 'lib/bootstrap',
-        'd3': 'lib/d3.v3',
+        'backbone': 'lib/backbone.min',
+        'bootstrap': 'lib/bootstrap.min',
+        'd3': 'lib/d3.v3.min',
         'jquery-ui': 'lib/jquery-ui-1.10.2.custom'
     },
     shim: {
