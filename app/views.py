@@ -305,7 +305,7 @@ def log_usage():
         bulkrequest = bulkrequest + '\n' + '{ "create" : { "_index" : "' +  ES_LOG_INDEX + '", "_type" : "event" } }'
         bulkrequest = bulkrequest + '\n' + json.dumps(event); 
 
-    es_log.bulk(bulkrequest, index=ES_LOG_INDEX, doc_type='event')
+    es_log.bulk(body=bulkrequest)
 
     return jsonify({'success': True})
     
