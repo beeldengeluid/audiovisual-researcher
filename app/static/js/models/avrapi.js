@@ -584,7 +584,7 @@ function($, _, Backbone, app){
         /* Get the total number of documents that are currently in the index */
         getTotalDocCount: function(){
             var self = this;
-            this.http.post('count', {}, function(data){
+            this.http.post('count', {'query': {'match_all': {}}}, function(data){
                 self.set('totalDocs', data.count);
             });
         },
