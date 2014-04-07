@@ -77,7 +77,7 @@ function($, _, Backbone, app, registerTemplate){
         registrationSuccess: function(){
             var self = this;
             this.$el.find('.loading').fadeOut('fast', function(){
-                self.$el.find('.modal-body').append('<div class="alert alert-success">You\'re almost done! Please follow the instructions in the email we\'ve just send you to activate your account.</div>');
+                self.$el.find('.modal-body').append('<div class="alert alert-success">You\'re almost done! Please follow the instructions in the email we\'ve just sent you to activate your account.</div>');
             });
         },
 
