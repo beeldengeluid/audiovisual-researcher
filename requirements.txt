@@ -1,5 +1,5 @@
 werkzeug==0.8.3
-Flask==0.9
+Flask==1.0
 Flask-Login==0.1.3
 Flask-Bcrypt
 Flask-Mail
